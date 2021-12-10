@@ -81,9 +81,17 @@ public class App {
         // Allocate new worker for each task
         // The worker is executed when a thread becomes
         // available in the thread pool
+
+        /**
+         * 点评：有个任务专成worker的过程，这里的写法也是比较优雅的
+         */
         tasks.stream().map(Worker::new).forEach(executor::execute);
         // All tasks were executed, now shutdown
         executor.shutdown();
+
+        /**
+         * 此处的目的应该是让主线程放弃cpu的时间，这个写法应该是不会影响性能的，等待任务执行完,自然会向下走
+         */
         while (!executor.isTerminated()) {
 //            System.out.println("main xxxxx ");
             Thread.yield();

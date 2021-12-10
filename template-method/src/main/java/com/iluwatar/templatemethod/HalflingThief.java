@@ -27,18 +27,21 @@ package com.iluwatar.templatemethod;
  * Halfling thief uses {@link StealingMethod} to steal.
  */
 public class HalflingThief {
+    /**
+     * 做一件事情，有很多的步骤 ， 这个定义主要的步骤，并且主要的步骤是不可以修改的
+     * 关键的节点确定下来，具体的实现交给下游去搞，而上层可以随时可以更换下游的的实现
+     */
+    private StealingMethod method;
 
-  private StealingMethod method;
+    public HalflingThief(StealingMethod method) {
+        this.method = method;
+    }
 
-  public HalflingThief(StealingMethod method) {
-    this.method = method;
-  }
+    public void steal() {
+        method.steal();
+    }
 
-  public void steal() {
-    method.steal();
-  }
-
-  public void changeMethod(StealingMethod method) {
-    this.method = method;
-  }
+    public void changeMethod(StealingMethod method) {
+        this.method = method;
+    }
 }
