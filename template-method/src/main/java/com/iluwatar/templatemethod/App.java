@@ -32,15 +32,13 @@ package com.iluwatar.templatemethod;
  */
 public class App {
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
-    var thief = new HalflingThief(new HitAndRunMethod());
-    thief.steal();
-    thief.changeMethod(new SubtleMethod());
-    thief.steal();
-  }
+    public static void main(String[] args) {
+        /**
+         * 这种方式叫做方法，本身是因为 方法的实现是可以替代的
+         */
+        var thief = new HalflingThief(new HitAndRunMethod());
+        thief.steal();
+        thief.changeMethod(new SubtleMethod());
+        thief.steal();
+    }
 }
